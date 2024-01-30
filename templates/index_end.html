@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- 도착 층과 도착 노드를 선택할 수 있는 html. -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이길 여기있어 서비스</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" > </script>
+  </head>
+<body>
+  <div>
+		<img class="img_center" src="{{ url_for('static', filename='vision_tower_image.png') }}">
+		<h1>이길 여기있어</h1>
+	</div>
+
+  <hr>
+  <form action="{{ url_for('select_end') }}" method="POST">
+    <select id="end_Floor_Dropdown" class="dropdown" name="end_floor" onchange="this.form.submit()">
+      <option value="wating_img" {% if not session['selected_floor_end'] %} selected {% endif %}>도착 층을 선택하세요</option>
+      {% for key, value in end_floor.items() %}
+        <option value="{{ value }}" {% if session['selected_floor_end'] == value %} selected {% endif %}>{{ key }}</option>
+      {% endfor %}
+    </select>
+  </form>
+
+  <form action="{{ url_for('select_end') }}" method="POST">
+    <input type="hidden" name="end_floor" value="{{ session['selected_floor_end'] }}">
+    <select id="end_node_Dropdown" class="dropdown" name="end_node" onchange="this.form.submit()">
+      <option value="default">도착 지점을 선택하세요</option>
+      {% for node in end_node %}
+      <option value="{{ node }}">{{ node }}</option>
+      {% endfor %}
+    </select>
+  </form>
+  <form id="endInfoForm" action="/selected"method="POST">
+    <input type="hidden" name="selected_floor_end" value="{{ session['selected_floor_end'] }}">
+    <input type="hidden" name="selected_node_end" value="{{ session['selected_node_end'] }}">
+    <button id="Button" onclick="submitEndInfoForm()" {% if not session['selected_node_end'] or session['selected_node_end'] == 'default' %}style="display: none;"{% endif %}>도착 지점 확정하기</button>
+  </form>
+  <span class="current-info">
+    선택된 도착 층: {% if session['selected_floor_end'] and session['selected_floor_end'] != 'wating_img' %} {{ session['selected_floor_end'] }} 가 선택되었습니다.{% else %} 아직 선택되지 않았습니다.{% endif %}
+  </span>
+  <span class="current-info">
+    선택된 도착지점: {% if session['selected_node_end'] and session['selected_node_end'] != 'wating_img' %} {{ session['selected_node_end'] }} 지점이 선택되었습니다.{% else %} 아직 선택되지 않았습니다.{% endif %}
+  </span>
+  <script>
+    function submitEndInfoForm() {
+      var form = document.getElementById('endInfoForm');
+      form.submit();
+    }
+  </script>
+  <hr>
+  <div class="box">
+    <div class="image-container">
+      {% if selected_floor_end_img %}
+        <img src="data:image/png;base64,{{ selected_floor_end_img }}" alt="end floor Image" class="img"/>
+        <div class="modal">
+          <span class="close">&times;</span>
+          <span class="right_rotate">&#8628;</span>
+          <img class="modal_content" />
+        </div>
+      {% else %}
+        <img src="/Vision_Tower_Image/wating_img.png" alt="end floor Image" class="wating img"/>
+        <div class="modal">
+          <span class="close">&times;</span>
+          <span class="right_rotate">&#8628;</span>
+          <img class="modal_content" />
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <div id="footer">
+		Copyright by 이길 여기있어 / Gachon university, project TMI 
+	</div>
+  
+</body>
+</html>

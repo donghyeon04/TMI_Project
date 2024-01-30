@@ -1,0 +1,152 @@
+@font-face {
+  font-family: "customfont";
+  src: url("/static/woff/NanumSquareNeoTTF-eHv.woff") format("woff");
+}
+@font-face {
+  font-family: "Arita-dotum-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff") format("woff");
+}
+.dropdown {
+  width: 200px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.current-info {
+  display: inline-block;
+  font-family: "Arita-dotum-Medium", sans-serif;
+  font-weight: bold;
+  margin-bottom: 3px;
+  margin-left: 12px;
+  font-size: 16px;
+}
+body {
+  background-color: #a9d0f5;
+  font-family: "Arita-dotum-Medium", sans-serif;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-family: "customfont", sans-serif;
+  font-weight: bold;
+  font-size: 3em;
+  font-size: 2.5em;
+  color: #003552;
+  /* text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white; */
+}
+.img_center {
+  max-width: 100%;
+  max-height: 100%;
+}
+.logo {
+  width: 250px;
+  height: auto;
+  margin: auto;
+  display: block;
+}
+.box {
+  background-color: #a9d0f5;
+  border-style: solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+.box img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+#footer {
+  background-color: #f2f2f2;
+  padding: 10px;
+  font-size: 70%;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.img {
+  width: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.img:hover {
+  opacity: 0.8;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+/* 모달창 이미지 */
+.modal_content {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  max-height: 75%;
+  height: auto;
+  border-radius: 10px;
+  animation-name: zoom;
+  animation-duration: 0.8s;
+}
+
+/* 모달창 애니메이션 추가 */
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+/* 닫기 버튼 */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.right_rotate {
+  position: absolute;
+  top: -20px;
+  right: 63px;
+  color: #f1f1f1;
+  font-size: 75px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.right_rotate:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+.right_rotate:hover,
+.right_rotate:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}

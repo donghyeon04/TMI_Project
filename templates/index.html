@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- 시작버튼만 구현되어있는 메인페이지. 여기서 웹페이지가 시작되게 구현하고 싶습니다 -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이길 여기있어 서비스</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </head>
+  <body>
+    <div>
+      <img class="img_center" src="{{ url_for('static', filename='vision_tower_image.png') }}" />
+      <h1>이길 여기있어</h1>
+    </div>
+
+    <hr />
+    <button id="startButton">시작</button>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var startButton = document.getElementById("startButton");
+        startButton.addEventListener("click", function () {
+          window.location.href = "/start_info";
+        });
+      });
+    </script>
+    <hr />
+    <img class="logo" src="{{ url_for('static', filename='logo.png') }}" />
+    <div id="footer">Copyright by 이길 여기있어 / Gachon university, project TMI</div>
+  </body>
+</html>

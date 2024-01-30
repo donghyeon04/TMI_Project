@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- 최종 구현된 경로가 이미지로 표시되게 하는 html. 추후에 body부분의 이미지 구현만 따와서 다른데다가 활용해도 좋을 것 같아요 -->
+<html>
+  <head>
+    <title>이길 여기있어 서비스</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </head>
+  <body>
+    <div>
+      <img class="img_center" src="{{ url_for('static', filename='vision_tower_image.png') }}" />
+      <h1>이길 여기있어</h1>
+    </div>
+
+    <hr />
+    <button id="restartButton">처음부터 시작</button>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var startButton = document.getElementById("restartButton");
+        startButton.addEventListener("click", function () {
+          window.location.href = "/start_info";
+        });
+      });
+    </script>
+    <hr />
+    <span class="current-info"> 출발 층: {{session['selected_floor_start']}}, 출발지점: {{session['selected_node_start']}} </span>
+    <br />
+    <span class="current-info">도착 층: {{session['selected_floor_end']}}, 도착지점: {{session['selected_node_end']}}</span>
+    <br />
+    {% if first_img and second_img %}
+    <span class="current-info">{{session['selected_floor_start']}} 층의 {{session['selected_node_start']}} 지점부터, 가장 가까운 엘레베이터까지 이동합니다.</span>
+    <div class="box">
+      <div class="image-container">
+        <img src="data:image/png;base64,{{ first_img }}" alt="First Image" class="first img" />
+        <div class="modal">
+          <span class="close">&times;</span>
+          <span class="right_rotate">&#8628;</span>
+          <img class="modal_content" />
+        </div>
+      </div>
+    </div>
+    <span class="current-info">엘레베이터부터 {{session['selected_floor_end']}} 층의 {{session['selected_node_end']}} 지점까지 이동합니다.</span>
+    <div class="box">
+      <div class="image-container">
+        <img src="data:image/png;base64,{{ second_img }}" alt="Second Image" class="second img" />
+        <div class="modal">
+          <span class="close">&times;</span>
+          <span class="right_rotate">&#8628;</span>
+          <img class="modal_content" />
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <span class="current-info">{{session['selected_floor_start']}} 층에서 {{session['selected_node_start']}} 지점부터 {{session['selected_node_end']}} 지점까지 이동합니다.</span>
+    <div class="box">
+      <div class="image-container">
+        <img src="data:image/png;base64,{{ img }}" alt="Image" class="img" />
+        <div class="modal">
+          <span class="close">&times;</span>
+          <span class="right_rotate">&#8628;</span>
+          <img class="modal_content" />
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <div id="footer">Copyright by 이길 여기있어 / Gachon university, project TMI</div>
+  </body>
+</html>

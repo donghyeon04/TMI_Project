@@ -1,0 +1,156 @@
+<!-- 404페이지 에러핸들러-->
+<script type="text/javascript">
+	   	var url = document.location.href;
+    	var name = 'www.amorepacific.com';
+    /*
+        if(name == 'www.iope.com'){
+            location.href="/global/en/error.html";
+        }else if(name == 'global.iope.com'){
+            location.href="/global/en/error.html";
+        }else if(name == 'www.iope.com.cn'){
+            location.href="/cn/zh/error.html";
+        }
+        */
+        if(url.indexOf("mamonde.co.kr")!=-1 || url.indexOf("/mamonde/ko")!=-1 ){
+			location.href="/content/mamonde/ko/error.html";
+        }else if(url.indexOf("mamonde.com.cn")!=-1 || url.indexOf("/mamonde/cn")!=-1 ){
+            if(url.indexOf("mamonde.com.cn/main.jsp")!=-1){
+                location.href="/";
+            }else{
+            	location.href="/error.html";
+            }
+        }else if(url.indexOf("iope.co.kr")!=-1){
+            //location.href="/ko/404.html"; // AS-IS
+            location.href="/kr/ko/error.html"; // TO-BE
+        }else if(url.indexOf("iope.com")!=-1){
+            if(name == 'www.iope.com.cn'){
+                location.href="/cn/zh/error.html";
+            }else{
+                location.href="/global/en/error.html";
+            }
+        }else if(url.indexOf("ryohair.com")!=-1){
+            console.log("test : "+name)
+            if(name == 'www.ryohair.com.cn'){
+                location.href="/cn/zh/util/error.html";
+            }else if(name == 'test.ryohair.com.cn'){
+                location.href="/cn/zh/util/error.html";
+            }
+            /* 대만, 국문 에러핸들러 추후 적용
+            else if(name == 'www.ryohair.com.kr'){
+                location.href="/kr/ko/util/error.html";
+            }else if(name == 'www.ryohair.com.tw'){
+                location.href="/tw/zh/util/error.html";
+            }
+            */
+        }else if(url.indexOf("test.ryohair.com")!=-1){
+ 			if(name == 'test.ryohair.com.cn'){
+                location.href="/cn/zh/util/error.html";
+            }
+       }else if(url.indexOf("hera.co.kr")!=-1){
+            location.href="/content/hera/ko/error.html";
+        }else if(url.indexOf("beautypoint.co.kr")!=-1){
+            location.href="/error.html";
+
+        }else if(url.indexOf("vitalbeautyvb.com")!=-1){
+            return;
+        }else if(url.indexOf("amorepacific.com")!=-1){
+
+
+            if(url.indexOf("http://www.amorepacific.com/search/total/search.jsp") == 0 ){
+
+                location.href="http://search.amorepacific.com/search/total/search.jsp";
+
+            }else if(url.indexOf("http://www.amorepacific.com/about/about_ceo.jsp") == 0){
+
+				location.href="/content/company/ko-kr/group/overview.html";
+
+            }else if(url.indexOf("http://www.amorepacific.com/utility/private_imageinfo.jsp") == 0){
+
+				location.href="/content/company/ko-kr/footer/cctv-policies-and-procedures.html";
+
+            }else if(url.indexOf("http://www.amorepacific.com/utility/custservice/faq.jsp") == 0){
+
+				location.href="/content/company/ko-kr/footer/customer-service/faq.html";
+
+            }else if(url.indexOf("http://www.amorepacific.com/utility/findstore/buy_offline_01.jsp") == 0){
+
+				location.href="/content/company/ko-kr/footer/search-store/offline/brand-search.html";
+
+            }else if(url.indexOf("http://www.amorepacific.com/utility/counselor/counselorFind.jsp") == 0){
+
+				location.href="/content/company/ko-kr/footer/search-store/counselorFind.html";
+
+            }else if(url.indexOf("http://www.amorepacific.com/resources/mmobile/js/checkMdevice.js") == 0){
+
+				location.href="/etc/designs/ap-commons/clientlibs/js/sitecatalyst/checkMdevice.js";
+
+            }else if(url.indexOf("http://www.amorepacific.com/resources/mmobile/js/checkMbrowser.js") == 0){
+
+				location.href="/etc/designs/ap-commons/clientlibs/js/sitecatalyst/checkMbrowser.js";
+
+            }else if(url.indexOf("http://www.amorepacific.com/mmobile/member/member_join.jsp") == 0){
+
+				location.href="https://www.beautypoint.co.kr/header/sign-up.ex.htm";	
+
+ 			}else if(url.indexOf("http://www.amorepacific.com/brand/cosmetic_main.jsp") == 0){
+
+				location.href="/content/company/ko-kr/brand/allbrand.html";
+
+			}else if(url.indexOf("http://www.amorepacific.com/about/about_news_list.jsp") == 0){
+
+				location.href="/content/company/ko-kr/footer/AMOREPACIFIC-NEWS/Group-News.html";
+
+            }else if(url.indexOf("http://www.amorepacific.com/invest/news_news.jsp") == 0){
+
+				location.href="/content/company/ko-kr/investor-relations/IR-Presentation/Quarterly-Results/Amorepacific.html";
+
+            }else if(url.indexOf("http://www.amorepacific.com/sustain/sustain_main.jsp") == 0){
+
+				location.href="/content/company/ko-kr/sustainability/overview.html";
+
+            }else if(url.indexOf("http://www.amorepacific.com/beauty/notice_list.jsp") == 0){
+
+				location.href="/content/company/ko-kr/footer/AMOREPACIFIC-NEWS/Notice.html";
+
+			}else if(url.indexOf("http://www.amorepacific.com/subindex.html?www.verite.co.kr") == 0){
+
+				location.href="/content/company/ko-kr/error/verite.html";
+
+        	}else if(url.indexOf("http://www.amorepacific.com/subindex.html?www.mirepa.co.kr") == 0){
+
+				location.href="/content/company/ko-kr/error/mirepa.html";
+
+        	}else if(url.indexOf("http://www.amorepacific.com/subindex.html?www.odysseysunrise.co.kr") == 0){
+
+				location.href="/content/company/ko-kr/error/odyssey.html";
+
+            }else if(url.indexOf("http://www.amorepacific.com/subindex.html?www.modinail.com") == 0){
+
+
+				location.href="http://www.modinail.co.kr";
+
+            }else if(url.indexOf("http://www.amorepacific.com/subindex.html?www.modinail.kr") == 0){
+
+				location.href="http://www.modinail.co.kr";
+
+            }else if(url.indexOf("http://www.amorepacific.com/subindex.html?modinail.kr") == 0){
+
+				location.href="http://www.modinail.co.kr";
+
+            }else if(url.indexOf("http://www.amorepacific.com/subindex.html?modinail.com") == 0){
+
+				location.href="http://www.modinail.co.kr";
+
+
+            }else{
+
+            	location.href="/content/company/ko-kr/error/404.html";
+            }
+
+
+        }else if(url.indexOf("primera.co.kr")!=-1 || url.indexOf("220.64.135.105") != -1){
+            location.href="/ko-kr/error.html";
+		 }else{
+             location.href="http://www.amorepacific.com/error/404.html";
+        }
+</script>
